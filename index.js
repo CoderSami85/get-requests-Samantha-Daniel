@@ -2,14 +2,10 @@
 
 // generator function
 
-const generatePictureHTML = function (arr) {
-  console.log(arr);
-  let dogPics= [];
-  arr.message.forEach(el =>{
-    dogPics.push(`<img src="${el}" alt="dogpics">`);
-  });
-  dogPics = dogPics.join('');
-  $('main').html(dogPics);
+const generatePictureHTML = function (dog) {
+  console.log(dog);
+  const img = dog.message;
+  $('main').html(`<img src="${img}" alt="dogpics">`);
 };
 
 
@@ -24,10 +20,10 @@ const handleNumberSubmit = function () {
 };
 
 
-const sendToAPI = function (number) {
-  fetch(`https://dog.ceo/api/breeds/image/random/${number}`)
+const sendToAPI = function (name) {
+  fetch(`https://dog.ceo/api/breed/${name}/images/random`)
     .then(response => response.json())
-    .then(dogs => generatePictureHTML(dogs))
+    .then(img => generatePictureHTML(img))
     .catch(err => console.log(err));
 };
 
