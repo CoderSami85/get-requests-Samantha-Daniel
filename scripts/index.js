@@ -1,15 +1,14 @@
+'use strict';
+
 // generator function
 
 const generatePictureHTML = function (arr) {
-  const pictures = arr.map(function (el) {
-    return `
-    <div class=img>
-      <img src="${el}" alt="dog picture">
-    </div>
-    `;
-  }).join('');
-
-  return pictures;
+  let dogPics= [];
+  arr.message.forEach(event=>{
+    dogPics.push(`<img src="${event}" alt="dogpics">`);
+  });
+  dogPics = dogPics.join('');
+  return dogPics;
 };
 
 // render function
