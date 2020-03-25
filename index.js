@@ -3,18 +3,15 @@
 // generator function
 
 const generatePictureHTML = function (arr) {
+  console.log(arr);
   let dogPics= [];
-  arr.message.forEach(event=>{
-    dogPics.push(`<img src="${event}" alt="dogpics">`);
+  arr.message.forEach(el =>{
+    dogPics.push(`<img src="${el}" alt="dogpics">`);
   });
   dogPics = dogPics.join('');
-  return dogPics;
+  $('main').html(dogPics);
 };
 
-// render function
-function renderPictures() {
-  $('main').html(generatePictureHTML());
-}
 
 // event listener functions
 
@@ -23,7 +20,6 @@ const handleNumberSubmit = function () {
     event.preventDefault();
     const number = $('.js-pictures').val();
     sendToAPI(number);
-    renderPictures();
   });
 };
 
@@ -38,7 +34,6 @@ const sendToAPI = function (number) {
 // callbacks
 
 const handleDogList = function () {
-  renderPictures();
   handleNumberSubmit();
 };
 
